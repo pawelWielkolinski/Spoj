@@ -13,32 +13,25 @@ public class FANGEN {
 
         do {
             fanSize = fanGenerator.nextInt();
-            if (fanSize <= 200 && fanSize != 0) {
+            if (fanSize <= 200 && !(fanSize <= 0)) {
                 fan = new String[fanSize * 2][fanSize * 2];
                 int length = fan.length;
-                if (fanSize == 1) {
+
                     for (int i = 0; i < length; i++) {
                         for (int j = 0; j < length; j++) {
-                            fan[i][j] = "*";
-                        }
-                    }
-                    listOfFans.add(fan);
-                }
-                if (fanSize > 1) {
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            boolean angles = j == 0 && (i == 0 || i == length - 1) || j == length - 1 && (i == 0 || i == length - 1);
-                            boolean core = i==fanSize && (j==fanSize || j == fanSize-1) || i == fanSize-1 && (j==fanSize || j == fanSize-1);
-                            if (angles || core) {
+                            if (j == i
+                                    || i +j  == 2 * fanSize - 1
+                                    || (i < fanSize && j < fanSize && i > j)
+                                    || (i >= fanSize && j >= fanSize && i < j)
+                                    || (i < fanSize && j >= fanSize && i < 2 * fanSize - 1 - j)
+                                    || (i >= fanSize && j < fanSize && j > 2 * fanSize - 1 - i)){
                                 fan[i][j] = "*";
-                            }
-                            if(!angles && !core){
-                                fan[i][j]="?";
+                            }else {
+                                fan[i][j] = ".";
                             }
                         }
                     }
                     listOfFans.add(fan);
-                }
             }
 
         } while (fanSize != 0);
