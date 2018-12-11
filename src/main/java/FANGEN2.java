@@ -16,6 +16,7 @@ public class FANGEN2 {
             if (fanSize <= 200 && fanSize != 0) {
                 fan = new String[fanSize * 2][fanSize * 2];
                 int length = fan.length;
+
                 if (fanSize == 1) {
                     fillFanWithStars(fan, listOfFans, length);
                 }
@@ -38,6 +39,11 @@ public class FANGEN2 {
 
         } while (fanSize != 0);
 
+        printOutFans(listOfFans);
+
+    }
+
+    private static void printOutFans(List<String[][]> listOfFans) {
         for (String[][] tab : listOfFans) {
             for (int i = 0; i < tab.length; i++) {
                 for (int j = 0; j < tab.length; j++) {
@@ -47,7 +53,6 @@ public class FANGEN2 {
             }
             System.out.println();
         }
-
     }
 
     private static void fillFanWithStars(String[][] fan, List<String[][]> listOfFans, int length) {
