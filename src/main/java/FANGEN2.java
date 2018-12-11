@@ -17,12 +17,7 @@ public class FANGEN2 {
                 fan = new String[fanSize * 2][fanSize * 2];
                 int length = fan.length;
                 if (fanSize == 1) {
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            fan[i][j] = "*";
-                        }
-                    }
-                    listOfFans.add(fan);
+                    fillFanWithStars(fan, listOfFans, length);
                 }
                 if (fanSize > 1) {
                     for (int i = 0; i < length; i++) {
@@ -32,8 +27,7 @@ public class FANGEN2 {
                                     && (j == fanSize || j == fanSize - 1) || i == fanSize - 1 && (j == fanSize || j == fanSize - 1);
                             if (angles || core) {
                                 fan[i][j] = "*";
-                            }
-                            if (!angles && !core) {
+                            }else{
                                 fan[i][j] = "?";
                             }
                         }
@@ -54,6 +48,15 @@ public class FANGEN2 {
             System.out.println();
         }
 
+    }
+
+    private static void fillFanWithStars(String[][] fan, List<String[][]> listOfFans, int length) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                fan[i][j] = "*";
+            }
+        }
+        listOfFans.add(fan);
     }
 
 }
