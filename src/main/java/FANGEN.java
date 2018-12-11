@@ -27,11 +27,17 @@ public class FANGEN {
                 if (fanSize > 1) {
                     for (int i = 0; i < length; i++) {
                         for (int j = 0; j < length; j++) {
-                            if (j == 0 || j == length - 1) {
-
+                            boolean angles = j == 0 && (i == 0 || i == length - 1) || j == length - 1 && (i == 0 || i == length - 1);
+                            boolean core = i==fanSize && (j==fanSize || j == fanSize-1) || i == fanSize-1 && (j==fanSize || j == fanSize-1);
+                            if (angles || core) {
+                                fan[i][j] = "*";
+                            }
+                            if(!angles && !core){
+                                fan[i][j]="?";
                             }
                         }
                     }
+                    listOfFans.add(fan);
                 }
             }
 
