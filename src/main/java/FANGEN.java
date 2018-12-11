@@ -17,21 +17,43 @@ public class FANGEN {
                 fan = new String[fanSize * 2][fanSize * 2];
                 int length = fan.length;
 
-                    for (int i = 0; i < length; i++) {
-                        for (int j = 0; j < length; j++) {
-                            if (j == i
-                                    || i +j  == 2 * fanSize - 1
-                                    || (i < fanSize && j < fanSize && i > j)
-                                    || (i >= fanSize && j >= fanSize && i < j)
-                                    || (i < fanSize && j >= fanSize && i < 2 * fanSize - 1 - j)
-                                    || (i >= fanSize && j < fanSize && j > 2 * fanSize - 1 - i)){
-                                fan[i][j] = "*";
-                            }else {
-                                fan[i][j] = ".";
-                            }
+                for (int i = 0; i < length; i++) {
+                    for (int j = 0; j < length; j++) {
+                        if (j == i
+                                || i + j == 2 * fanSize - 1
+                                || (i < fanSize && j < fanSize && i > j)
+                                || (i >= fanSize && j >= fanSize && i < j)
+                                || (i < fanSize && j >= fanSize && i < 2 * fanSize - 1 - j)
+                                || (i >= fanSize && j < fanSize && j > 2 * fanSize - 1 - i)) {
+                            fan[i][j] = "*";
+                        } else {
+                            fan[i][j] = ".";
                         }
                     }
-                    listOfFans.add(fan);
+                }
+                listOfFans.add(fan);
+            }
+
+            if (fanSize >= -200 && !(fanSize >= 0)) {
+                int negativeFanSize = Math.abs(fanSize);
+                fan = new String[negativeFanSize * 2][negativeFanSize * 2];
+                int length = fan.length;
+
+                for (int i = 0; i < length; i++) {
+                    for (int j = 0; j < length; j++) {
+                        if (j == i
+                                || i + j == 2 * negativeFanSize - 1
+                                || (i < negativeFanSize && j < negativeFanSize && j > i)
+                                || (i < negativeFanSize && j >= negativeFanSize && j > 2 * negativeFanSize - 1 - i)
+                                || (i >= negativeFanSize && j < negativeFanSize && i < 2 * negativeFanSize - 1 - j)
+                                || (i >= negativeFanSize && j >= negativeFanSize && i > j)) {
+                            fan[i][j] = "*";
+                        } else {
+                            fan[i][j] = ".";
+                        }
+                    }
+                }
+                listOfFans.add(fan);
             }
 
         } while (fanSize != 0);
